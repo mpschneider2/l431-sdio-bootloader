@@ -143,3 +143,23 @@ void bootloader_reflash() {
 
 	}
 }
+
+void bootloader_jump_to_app() {
+
+	HAL_SD_DeInit(&hsd1);
+
+	__disable_irq();
+
+	SysTick->CTRL = 0;
+	SysTick->LOAD = 0;
+	SysTick->VAL = 0;
+
+	__set_MSP(*((volatile uint32_t *) APP_START_ADDR));
+
+	uint32_t reset_handler_addr = *(volatile uint32_t * )(APP_START_ADDR + 4);
+	void (*appEntry)(void) = (void (*)(void))reset_handler_addr;
+
+	appEntry();
+
+//	SCB->VTOR = APP_START_ADDR; //NOPE. Do in main app
+}

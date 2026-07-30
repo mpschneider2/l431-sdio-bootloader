@@ -21,6 +21,7 @@
 #include "fatfs.h"
 #include "bootloader.h"
 #include <stdio.h>
+#include "flash_layout.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -120,7 +121,7 @@ int main(void)
   } //else firmware not found or trouble mounting uSD
   //Boot normally!
 
-  HAL_SD_DeInit(&hsd1);
+  bootloader_jump_to_app();
 
   //BOOT NORMALLY
 

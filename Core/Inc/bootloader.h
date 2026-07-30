@@ -22,4 +22,6 @@ uint32_t calculateBinaryCRC(FIL * Fil);
 
 void bootloader_reflash();
 
+void bootloader_jump_to_app();
+
 #endif /* INC_BOOTLOADER_H_ */
