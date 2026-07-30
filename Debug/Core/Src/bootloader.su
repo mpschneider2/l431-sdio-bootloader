@@ -1,0 +1,5 @@
+../Core/Src/bootloader.c:19:6:initCRC	0	static
+../Core/Src/bootloader.c:57:10:calculateBinaryCRC	32	static
+../Core/Src/bootloader.c:23:14:calculateFileCRC	48	static
+../Core/Src/bootloader.c:79:10:calculateFlashCRC	0	static
+../Core/Src/bootloader.c:90:6:reflash	80	static

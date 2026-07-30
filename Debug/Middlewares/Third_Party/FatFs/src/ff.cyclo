@@ -1,0 +1,12 @@
+../Middlewares/Third_Party/FatFs/src/ff.c:623:7:ld_dword	1
+../Middlewares/Third_Party/FatFs/src/ff.c:2904:5:get_ldnumber	6
+../Middlewares/Third_Party/FatFs/src/ff.c:3216:9:validate	6
+../Middlewares/Third_Party/FatFs/src/ff.c:912:9:move_window	3
+../Middlewares/Third_Party/FatFs/src/ff.c:2965:6:check_fs	6
+../Middlewares/Third_Party/FatFs/src/ff.c:2993:9:find_volume.isra	31
+../Middlewares/Third_Party/FatFs/src/ff.c:1001:7:get_fat.isra	11
+../Middlewares/Third_Party/FatFs/src/ff.c:1470:9:dir_sdi.constprop	11
+../Middlewares/Third_Party/FatFs/src/ff.c:3260:9:f_mount	5
+../Middlewares/Third_Party/FatFs/src/ff.c:3308:9:f_open	46
+../Middlewares/Third_Party/FatFs/src/ff.c:3511:9:f_read	17
+../Middlewares/Third_Party/FatFs/src/ff.c:3813:9:f_close	2
