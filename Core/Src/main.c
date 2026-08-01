@@ -107,6 +107,8 @@ int main(void)
 //  MX_FATFS_Init();
   /* USER CODE BEGIN 2 */
 
+  initCRC();
+
   uint32_t file_crc;
 
   if (calculateFileCRC(&file_crc) == CRC_OK) {
@@ -116,6 +118,8 @@ int main(void)
 	  if (file_crc != flash_crc) {
 		  //THEN ERASE AND COPY
 		  bootloader_reflash();
+	  } else {
+		  printf("Flash and Bootloader have same firmware!\r\n");
 	  }
 
   } //else firmware not found or trouble mounting uSD

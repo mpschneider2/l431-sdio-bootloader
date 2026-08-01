@@ -15,8 +15,8 @@ typedef enum {
 	CRC_OK
 } CRC_status_t;
 
-CRC_status_t calculateFileCRC();
-uint32_t calculateFlashCRC();
+CRC_status_t calculateFileCRC(uint32_t * crc_out);
+uint32_t calculateFlashCRC(); // need to specify a length, otherwise
 void initCRC();
 uint32_t calculateBinaryCRC(FIL * Fil);
 

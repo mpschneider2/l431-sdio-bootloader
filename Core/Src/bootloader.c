@@ -60,17 +60,30 @@ uint32_t calculateBinaryCRC(FIL * Fil) {
 
 	static uint32_t crc_buffer[512/4] = {0}; // same as sector size on uSD card (512 bytes). Sized in bytes. CRC takes bytes.
 	UINT bytesRead = 0;
+	uint32_t bytesWritten = 0;
 
 	while (f_read(Fil, crc_buffer, sizeof(crc_buffer), &bytesRead) == FR_OK && bytesRead > 0) { // fine because of short circuit
 		int i = 0;
 		for (i = 0; i < bytesRead/4; i++) { // stream in word length
 			CRC->DR = crc_buffer[i]; //takes uint32_t (word)
+			bytesWritten += 4;
 		}
 
 		uint8_t remaining_bytes = (bytesRead % 4);
 		for (int j = 0; j < remaining_bytes; j++) {
 			*(volatile uint8_t *)(&(CRC->DR)) = *(((uint8_t *)&crc_buffer[i])+j); //takes uint8_t (byte)
+			bytesWritten += 1;
 		}
+	}
+
+	while (bytesWritten < APP_SIZE && bytesWritten % 4 != 0) { // pad and get to word boundary
+		*(volatile uint8_t *)(&(CRC->DR)) = (uint8_t) 0xFF;
+		bytesWritten += 1;
+	}
+
+	while (bytesWritten < APP_SIZE) { // APP_SIZE refers to flash size, which must be multiple of 2kb because it must align with pages, therefore must be page-aligned
+		CRC->DR = 0xFFFFFFFF; //Fill with same equivalent as empty flash
+		bytesWritten += 4;
 	}
 
 	return CRC->DR;

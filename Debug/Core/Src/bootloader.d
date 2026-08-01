@@ -32,7 +32,7 @@ Core/Src/bootloader.o: ../Core/Src/bootloader.c ../Core/Inc/bootloader.h \
  ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h \
  ../Middlewares/Third_Party/FatFs/src/diskio.h \
  ../Middlewares/Third_Party/FatFs/src/ff.h ../FATFS/Target/sd_diskio.h \
- ../Core/Inc/flash_layout.h
+ ../Core/Inc/flash_layout.h ../Core/Inc/main.h
 ../Core/Inc/bootloader.h:
 ../FATFS/App/fatfs.h:
 ../Middlewares/Third_Party/FatFs/src/ff.h:
@@ -72,3 +72,4 @@ Core/Src/bootloader.o: ../Core/Src/bootloader.c ../Core/Inc/bootloader.h \
 ../Middlewares/Third_Party/FatFs/src/ff.h:
 ../FATFS/Target/sd_diskio.h:
 ../Core/Inc/flash_layout.h:
+../Core/Inc/main.h:
